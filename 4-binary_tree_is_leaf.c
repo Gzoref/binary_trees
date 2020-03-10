@@ -15,6 +15,7 @@ int binary_tree_is_leaf(const binary_tree_t *node)
 		return (0);
 	}
 
+       /* If next node doesn't exist, is leaf, not parent */
 	if (node->left == NULL && node->right == NULL)
 	{
 		return (1);
