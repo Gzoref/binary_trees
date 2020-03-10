@@ -22,8 +22,10 @@ void binary_tree_preorder(const binary_tree_t *tree, void (*func)(int))
 		return;
 	}
 
+	/* Pass value to function pointer */
 	func(tree->n);
 
+	/* Recursivly order left and right branches with preorder */
 	binary_tree_preorder(tree->left, func);
 	binary_tree_preorder(tree->right, func);
 }
