@@ -46,7 +46,7 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 		new2 = new2->parent;
 		depth_2--;
 	}
-	while (depth_1 > depth_2)
+	while (depth_1 < depth_2)
 	{
 		new1 = new1->parent;
 		depth_2--;
