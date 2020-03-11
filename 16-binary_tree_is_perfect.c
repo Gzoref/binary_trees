@@ -1,6 +1,21 @@
 #include "binary_trees.h"
 
 /**
+ * binary_tree_size - Measures the size of a binary tree
+ * @tree: Pointer to the root node of the tree
+ * Return: If tree is NULL, the function will return 0
+ */
+
+size_t binary_tree_size(const binary_tree_t *tree)
+{
+	if (tree == NULL)
+		return (0);
+
+	return (1 + binary_tree_size(tree->left) +
+		binary_tree_size(tree->right));
+}
+
+/**
  * binary_tree_is_perfect - Measures the balance factor of a binary tree
  *
  * @tree: Pointer to the root node of the tree to traverse
@@ -10,7 +25,8 @@
 
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	int balanced = 0;
+	int tree_height, tree_size, count = 0;
+	int balanced = 1;
 
 	if (tree == NULL)
 	{
@@ -21,13 +37,19 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	{
 		return (0);
 	}
-	balanced = binary_tree_height(tree->left) -
-		binary_tree_height(tree->right);
+	tree_height = binary_tree_height(tree);
+	tree_size = binary_tree_size(tree);
 
-	if (balanced == 0)
+	for (; count <= tree_height; count++)
+	{
+		balanced *= 2;
+	}
+
+	if (balanced - 1 == tree_size)
 		return (1);
-	else
-		return (0);
+
+	return (0);
+
 }
 
 /**
@@ -50,16 +72,16 @@ size_t binary_height_recursion(const binary_tree_t *tree)
 		return (0);
 	}
 
-	_left = binary_height_recursion(tree->left);
-	_right = binary_height_recursion(tree->right);
+	_left = binary_height_recursion(tree->left) + 1;
+	_right = binary_height_recursion(tree->right) + 1;
 
 	if (_left > _right)
 	{
-		return (_left + 1);
+		return (_left);
 	}
 	else
 	{
-		return (_right + 1);
+		return (_right);
 	}
 }
 
