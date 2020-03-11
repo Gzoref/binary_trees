@@ -1,13 +1,13 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_node - Creates a binary tree node
+ * bst_insert - Inserts a value in a Binary Search Tree
  *
  * @tree: Double pointer to root node of BST
  *
  * @value: Value at node
  *
- * Return:  A pointer to the created node, or NULL on failure
+ * Return: A pointer to the created node, or NULL on failure
  */
 
 bst_t *bst_insert(bst_t **tree, int value)
