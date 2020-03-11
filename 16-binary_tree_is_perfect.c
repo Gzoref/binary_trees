@@ -10,7 +10,9 @@
 
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	int balanced;
+	int tree_left = 0;
+	int tree_right = 0;
+	int balance = 0;
 
 	if (tree == NULL)
 	{
@@ -19,11 +21,13 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 
 	if (tree->left == NULL && tree->right == NULL)
 	{
-		return (0);
+		return (1);
 	}
-	balanced = binary_tree_height(tree->left) - binary_tree_height(tree->right);
+	tree_left = binary_tree_height(tree->left);
+	tree_right = binary_tree_height(tree->right);
+	balance = tree_left - tree_right;
 
-	if (balanced == 0)
+	if (balance == 0)
 	{
 		return (1);
 	}
@@ -38,7 +42,7 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 
 size_t binary_height_recursion(const binary_tree_t *tree)
 {
-	size_t _left, _right;
+	size_t _left = 0, _right = 0;
 
 	if (tree == NULL)
 	{
