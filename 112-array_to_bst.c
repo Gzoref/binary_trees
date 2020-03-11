@@ -15,8 +15,7 @@ bst_t *array_to_bst(int *array, size_t size)
 	if (array == NULL)
 		return (NULL);
 
-	/* iterates through the array,
-	   inserts balues into the tree */
+	/* iterates through the array and inserts values into the tree */
 	while (i < size)
 	{
 		bst_insert(&tree_node, array[i]);
