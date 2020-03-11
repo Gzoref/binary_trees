@@ -12,6 +12,11 @@ binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree)
 {
 	binary_tree_t *new_root, *old_root = NULL;
 
+	if (tree == NULL)
+	{
+		return (tree);
+	}
+
 	new_root = tree->left;
 	tree->left = new_root->right;
 
