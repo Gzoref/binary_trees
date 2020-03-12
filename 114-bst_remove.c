@@ -1,10 +1,9 @@
 #include "binary_trees.h"
 
 /**
- * recursive_bst_check - Return minmax values
+ * min_value - Return minmax values
  *
- * @tree:  Pointer to the root node of the tree to rotate
- *
+ * @node:  Pointer to the root node of the tree to rotate
  *
  * Return: 1 if BST, 0 if not
  */
