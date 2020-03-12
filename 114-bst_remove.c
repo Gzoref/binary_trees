@@ -55,20 +55,19 @@ bst_t *bst_remove(bst_t *root, int value)
 		/* Node has one or no children */
 		if (root->left == NULL)
 		{
-			/* Remove and return pointer to removed */
 			temp = root->right;
 			free(root);
 			return (temp);
 		}
 		else if (root->right == NULL)
 		{
-			/* Remove and return pointer to removed */
 			temp = root->left;
 			free(root);
 			return (temp);
 		}
 		/* Node with two children */
 		temp = min_value(root->right);
+		root->n = temp->n;
 		root->right = bst_remove(root->right, temp->n);
 	}
 	return (root);
