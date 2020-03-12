@@ -48,13 +48,13 @@ bst_t *bst_remove(bst_t *root, int value)
 	else
 	{
 		/* Node has one or no children */
-		if (root->left == NULL && root->right == NULL)
+		if (root->left == NULL)
 		{
 			temp = root->right;
 			free(root);
 			return (temp);
 		}
-		else if (root->right == NULL || root->left == NULL)
+		else if (root->right == NULL)
 		{
 			temp = root->left;
 			free(root);
