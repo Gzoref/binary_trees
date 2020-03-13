@@ -35,40 +35,41 @@ bst_t *bst_remove(bst_t *root, int value)
 	bst_t *temp = NULL;
 
 	if (root == NULL)
-	{
 		return (NULL);
-	}
 
 	/* If node to delete smaller than root value, it is on left */
 	if (value < root->n)
-	{
 		root->left = bst_remove(root->left, value);
-	}
 	/* If node to delete greater than root value, it is on right */
 	else if (value > root->n)
-	{
 		root->right = bst_remove(root->right, value);
-	}
-	/* If value is root's value, delete node */
 	else
 	{
-		/* Node has one or no children */
-		if (root->left == NULL)
+		if (!root->left && !root->right)
 		{
-			temp = root->right;
 			free(root);
-			return (temp);
+			return (NULL);
 		}
-		else if (root->right == NULL)
+		else if (root->left != NULL || root->right != NULL)
 		{
-			temp = root->left;
-			free(root);
-			return (temp);
+			temp = root;
+			if (root->right)
+				root = temp->right;
+			else if (root->left)
+				root = temp->left;
+			if (temp->parent->left == temp)
+				temp->parent->left = root;
+			else
+				temp->parent->right = root;
+			root->parent = temp->parent;
+			free(temp);
 		}
-		/* Node with two children */
-		temp = min_value(root->right);
-		root->n = temp->n;
-		root->right = bst_remove(root->right, temp->n);
+		else
+		{
+			temp = min_value(root->right);
+			root->n = temp->n;
+			root->right = bst_remove(root->right, temp->n);
+		}
 	}
 	return (root);
 }
