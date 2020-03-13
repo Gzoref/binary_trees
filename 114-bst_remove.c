@@ -11,6 +11,11 @@ bst_t *min_value(bst_t *node)
        /* Loop to find leftmost node */
 	bst_t *current = node;
 
+	if (node == NULL)
+	{
+		return (NULL);
+	}
+
 	while (current && current->left != NULL)
 	{
 		current = current->left;
