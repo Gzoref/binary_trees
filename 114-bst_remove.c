@@ -16,7 +16,7 @@ bst_t *min_value(bst_t *node)
 		return (NULL);
 	}
 
-	while (current && current->left != NULL)
+	while (current->left != NULL)
 	{
 		current = current->left;
 	}
