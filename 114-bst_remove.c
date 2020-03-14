@@ -51,10 +51,12 @@ bst_t *bst_remove(bst_t *root, int value)
 		{
 			temp = root->right;
 			if (root->parent)
-				root->parent->left = temp;
-			else
-				root->parent->right = temp;
-
+			{
+				if (root->parent->left == root)
+					root->parent->left = temp;
+				else
+					root->parent->right = temp;
+			}
 			temp->parent = root->parent;
 			free(root);
 			return (temp);
